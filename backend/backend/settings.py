@@ -76,7 +76,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        #sqlite3 is the default one but I changed it to postgresql
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'jobportal',
         'USER': 'postgres',
