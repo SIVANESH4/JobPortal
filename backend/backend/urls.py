@@ -23,5 +23,5 @@ urlpatterns = [
     path('ayo/', test_api),
     path('register/', register_user),
     path('login/', login_user),
-    path('JobList/', jobs_list)
+    path('JobList/', jobs_list),
 ]

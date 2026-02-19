@@ -33,5 +33,5 @@ def login_user(request):
 @api_view(['GET'])
 def jobs_list(request):
     jobs = Job.objects.all()
-    serializers = JobSerializer(jobs, many=True)
-    return Response(serializers.data)
+    serializer = JobSerializer(jobs, many=True)
+    return Response(serializer.data)
