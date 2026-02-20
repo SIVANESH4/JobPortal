@@ -24,4 +24,5 @@ urlpatterns = [
     path('register/', register_user),
     path('login/', login_user),
     path('JobList/', jobs_list),
+    path('ApplyJob/', apply_job),
 ]
