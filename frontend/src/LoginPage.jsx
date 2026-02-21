@@ -1,5 +1,6 @@
 import React from 'react'
 import { useActionState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom';
 
 async function loginAction(_, formData) {
 
@@ -14,6 +15,11 @@ async function loginAction(_, formData) {
 
     const data = await res.json();
 
+    if(res.ok){
+        localStorage.setItem("userId", data.userid);
+        localStorage.setItem("userName", data.username);
+    }
+
     return data.message || "Login Failed"
 }
 
@@ -22,6 +28,10 @@ export default function LoginPage() {
     const [ message, formAction, isPending] = useActionState(loginAction, "", {
         withPending: true
     });
+    const navigate = useNavigate();
+    if (message == "Login Successful"){
+        navigate("/jobs")
+    }
 
   return (
     <div className="bg-gray-50 text-gray-800">
@@ -101,9 +111,9 @@ export default function LoginPage() {
 
     <p className="text-sm text-center text-gray-600">
         New to JobPortal?
-        <a href="#" className="text-blue-700 font-medium hover:underline">
+        <NavLink to={"/register"} className="text-blue-700 font-medium hover:underline">
             Register here
-        </a>
+        </NavLink>
     </p>
 </form>
 </section>

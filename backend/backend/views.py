@@ -25,7 +25,7 @@ def login_user(request):
     
     try:
         user = User.objects.get(username=username, password=password)
-        return Response({"message": "Login Successful"}, status=status.HTTP_200_OK)
+        return Response({"userid": user.id, "username":user.username ,"message": "Login Successful"}, status=status.HTTP_200_OK)
     except User.DoesNotExist:
         return Response({"message": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST)
     

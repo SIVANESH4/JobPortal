@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default function JobList() {
   const[jobs, setJobs]= useState([]);
-
+  const username = localStorage.getItem("userName");
   useEffect(()=>{
     fetch("http://127.0.0.1:8000/JobList/")
     .then(res=> res.json())
@@ -24,7 +25,7 @@ export default function JobList() {
       </nav>
 
       <div className="flex items-center gap-4">
-        <span className="text-sm text-gray-600">Hello, Logesh</span>
+        <span className="text-sm text-gray-600">Hello, {username}</span>
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-700 text-sm font-semibold text-white">
           L
         </div>
@@ -57,7 +58,7 @@ export default function JobList() {
             <span className="rounded bg-gray-100 px-2 py-1">🕒 Full Time</span>
           </div>
           <div className="mt-4 flex justify-end">
-            <button className="text-sm font-medium text-blue-700 hover:underline">View Details →</button>
+            <NavLink to={`/apply/${jobs.id}`}className="text-sm font-medium text-blue-700 hover:underline">View Details →</NavLink>
           </div>
         </div>))}
       </div>
